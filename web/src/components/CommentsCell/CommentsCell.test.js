@@ -1,4 +1,5 @@
 import { render, screen } from '@redwoodjs/testing/web'
+
 import { Loading, Empty, Failure, Success } from './CommentsCell'
 import { standard } from './CommentsCell.mock'
 
@@ -10,9 +11,8 @@ describe('CommentsCell', () => {
   })
 
   it('renders Empty successfully', async () => {
-    expect(() => {
-      render(<Empty />)
-    }).not.toThrow()
+    render(<Empty />)
+    expect(screen.getByText('No comments yet')).toBeInTheDocument()
   })
 
   it('renders Failure successfully', async () => {
